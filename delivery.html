@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComradeCart | Kutus Campus Delivery</title>
+    <meta name="description"
+        content="Affordable, fast deliveries for Kirinyaga University students. Order groceries, snacks, liquor, party packages, meat, and comrade essentials in Kutus, Kirinyaga County.">
+    <link rel="stylesheet" href="delivery-style.css">
+</head>
+
+<body>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- 1. HEADER SECTION -->
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo" id="logo-link">
+                <span class="logo-badge">Comrade</span>Cart
+            </a>
+
+            <nav class="nav-links">
+                <span class="nav-item active" data-tab="home">Home</span>
+                <span class="nav-item" data-tab="about">About</span>
+                <span class="nav-item" data-tab="contact">Contact</span>
+                <span class="nav-item" data-tab="legal">Terms & Privacy</span>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <!-- Light Mode Icon (Moon) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="moon-icon">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <!-- Dark Mode Icon (Sun) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="sun-icon" style="display:none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <button id="cart-trigger" class="cart-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Cart</span>
+                    <span id="cart-badge-count" class="cart-badge">0</span>
+                </button>
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-nav" class="mobile-nav-drawer" aria-hidden="true">
+            <span class="mobile-nav-item" data-tab="home">🏠 Home</span>
+            <span class="mobile-nav-item" data-tab="about">ℹ️ About</span>
+            <span class="mobile-nav-item" data-tab="contact">📞 Contact</span>
+            <span class="mobile-nav-item" data-tab="legal">📄 Terms & Privacy</span>
+        </div>
+    </header>
+
+    <!-- 2. STATUS BANNER -->
+    <div id="status-banner" class="status-banner">
+        <span id="status-dot" class="status-indicator"></span>
+        <span id="status-message">Checking delivery hours...</span>
+    </div>
+
+    <!-- 3. MAIN CONTENT CONTAINER -->
+    <main class="container" style="margin-top: 110px;">
+
+        <!-- ================= HOME TAB ================= -->
+        <section id="tab-home" class="tab-content active">
+            <!-- Hero Header -->
+            <div class="hero">
+                <div class="hero-badge">📍 Kutus, Kirinyaga County</div>
+                <h1>Sherehe, Snacks & Supplies <br>Delivered <span>Straight to Your Hostel</span></h1>
+                <p>ComradeCart is the ultimate campus courier. Groceries, party packages, liquor, meat & stationery at
+                    pocket-friendly prices. Open daily 8:00 AM - 10:00 PM.</p>
+            </div>
+
+            <!-- Shop Section -->
+            <div class="shop-section">
+                <!-- Categories Sidebar -->
+                <aside class="categories-sidebar">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <ul class="category-list">
+                        <li>
+                            <button class="category-btn active" data-category="all">
+                                <span>🛍️</span> All Categories
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="munchies">
+                                <span>🍔</span> Snacks & Fast Food
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="groceries">
+                                <span>🍎</span> Grocery Kitchen
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="meat">
+                                <span>🥩</span> Fresh Cuts & Meat
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="liquor">
+                                <span>🍻</span> Comrade Pub & Liquor
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="party">
+                                <span>🎉</span> Party Packages
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-btn" data-category="essentials">
+                                <span>✏️</span> Student Essentials
+                            </button>
+                        </li>
+                    </ul>
+                </aside>
+
+                <!-- Products Display Area -->
+                <div class="products-wrapper">
+                    <div class="section-title-row">
+                        <h2 id="current-category-title">All Categories</h2>
+                        <span class="text-muted" id="items-count-display">Loading items...</span>
+                    </div>
+                    <div class="products-grid" id="products-grid">
+                        <!-- Dynamic Products Inserted via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT TAB ================= -->
+        <section id="tab-about" class="tab-content">
+            <div class="about-grid">
+                <div class="about-info">
+                    <div class="hero-badge">Our Story</div>
+                    <h2>Created by Comrades, for Comrades</h2>
+                    <p>ComradeCart started right here in Kutus, Kirinyaga County, out of a simple need: students
+                        studying late, planning gatherings, or running low on kitchen items didn't have a fast,
+                        student-budget delivery service that drops items straight to their doorsteps.</p>
+                    <p>We work directly with local vendors in Kutus Town to aggregate fresh meat, groceries, liquor, and
+                        party packs, delivering them to student rental units and KyU university hostels in under 35
+                        minutes.</p>
+
+                    <div class="about-features">
+                        <div class="feature-box">
+                            <span class="feature-icon">⚡</span>
+                            <h3>Super Fast</h3>
+                            <p>Delivered on local boda-bodas within 30-40 minutes.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-icon">💰</span>
+                            <h3>Student Budgets</h3>
+                            <p>Fair items prices with a flat delivery rate of only KES 50.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-icon">🕒</span>
+                            <h3>Daily Service</h3>
+                            <p>Open from 8:00 AM to 10:00 PM every day of the week.</p>
+                        </div>
+                        <div class="feature-box">
+                            <span class="feature-icon">🥓</span>
+                            <h3>Everything in One</h3>
+                            <p>Groceries, fresh butcher meat, drinks, and party packs combined.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-illustration">
+                    <div class="about-logo-large">CC</div>
+                    <h3 style="margin-bottom: 1rem;">ComradeCart Kutus</h3>
+                    <p
+                        style="text-align: center; color: var(--text-muted); font-size: 0.9rem; max-width: 320px; margin-bottom: 1.5rem;">
+                        Connecting Kirinyaga University students to the local marketplace with absolute convenience.</p>
+                    <div
+                        style="font-size: 0.85rem; border-top: 1px solid var(--border-light); width: 100%; padding-top: 1rem; text-align: center;">
+                        <span style="color: var(--secondary); font-weight: 700;">🟢 Serving Kutus Campus Area</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT TAB ================= -->
+        <section id="tab-contact" class="tab-content">
+            <div class="hero" style="padding: 1.5rem 0;">
+                <div class="hero-badge">Get in Touch</div>
+                <h2>Need Support? We're Here</h2>
+                <p>Have an inquiry, custom vendor requests, or need support with a pending order? Reach out instantly.
+                </p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info-card">
+                    <h3 class="contact-info-title">Contact Channels</h3>
+                    <div class="contact-methods">
+                        <div class="contact-method-item">
+                            <span class="contact-method-icon">📞</span>
+                            <div class="contact-method-detail">
+                                <h4>Phone / M-Pesa Support</h4>
+                                <p>+254 700 123 456 / +254 799 654 321</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method-item">
+                            <span class="contact-method-icon">📧</span>
+                            <div class="contact-method-detail">
+                                <h4>Email Enquiries</h4>
+                                <p>support@comradecart.co.ke</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method-item">
+                            <span class="contact-method-icon">📍</span>
+                            <div class="contact-method-detail">
+                                <h4>Hub Location</h4>
+                                <p>Kutus Town (Opposite KyU Main Gate Entrance), Kirinyaga County</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method-item">
+                            <span class="contact-method-icon">🕒</span>
+                            <div class="contact-method-detail">
+                                <h4>Operating Hours</h4>
+                                <p>Mon - Sun: 8:00 AM - 10:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/254700123456?text=Hi%20ComradeCart!%20I%20have%20an%20order%20inquiry."
+                        target="_blank" class="whatsapp-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.977h.004c4.368 0 7.926-3.559 7.93-7.934A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.98c-.202-.101-1.194-.588-1.379-.653-.185-.069-.32-.101-.454.101-.135.202-.52.653-.637.785-.118.135-.235.152-.437.051-2.01-.1-2.614-1.253-2.827-1.62-.213-.367-.023-.563.158-.744.162-.162.36-.42.541-.63.181-.21.242-.357.363-.597.121-.24.06-.45-.03-.651-.09-.2-1.194-2.88-1.379-3.327-.181-.437-.367-.377-.504-.377-.13-.006-.279-.006-.429-.006-.15 0-.395.056-.602.28-.206.224-.789.77-.789 1.878 0 1.11.805 2.186.916 2.336.112.15 1.583 2.42 3.83 3.39.534.23 1.054.412 1.487.55.539.171 1.03.147 1.417.09.431-.063 1.194-.488 1.361-.958.167-.47.167-.874.118-.959-.05-.085-.186-.135-.39-.235z" />
+                        </svg>
+                        Chat Support on WhatsApp
+                    </a>
+                </div>
+
+                <form class="contact-form" id="delivery-contact-form">
+                    <h3>Send Us a Message</h3>
+
+                    <div class="form-group">
+                        <label for="contact-name">Full Name</label>
+                        <input type="text" id="contact-name" class="form-control" placeholder="e.g. Kelvin Kilonzo"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" class="form-control"
+                            placeholder="e.g. kelvin@student.kyu.ac.ke" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Your Message</label>
+                        <textarea id="contact-message" class="form-control" rows="5"
+                            placeholder="Let us know what you need or how we can help..." required
+                            style="resize:none;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="align-self: flex-start; min-width: 160px;">Send
+                        Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= LEGAL TAB ================= -->
+        <section id="tab-legal" class="tab-content">
+            <div class="legal-tabs">
+                <button class="legal-tab-btn active" data-legal="privacy">Privacy Policy</button>
+                <button class="legal-tab-btn" data-legal="terms">Terms & Conditions</button>
+            </div>
+
+            <!-- Privacy Policy Content -->
+            <div id="legal-privacy" class="legal-container">
+                <h2 class="legal-title">Privacy Policy</h2>
+                <div class="legal-section">
+                    <h3>1. Data We Collect</h3>
+                    <p>To fulfill your deliveries in Kutus, we collect basic transactional information, including:</p>
+                    <ul>
+                        <li>Your name (for rider delivery verification).</li>
+                        <li>Phone number (for M-Pesa payments and rider contact).</li>
+                        <li>Location details (hostel/apartment name and room number).</li>
+                        <li>Cart contents and purchase history.</li>
+                    </ul>
+                </div>
+                <div class="legal-section">
+                    <h3>2. How We Use Your Information</h3>
+                    <p>Your details are used solely to prepare orders, calculate delivery routes in Kutus, contact you
+                        regarding delivery status, and coordinate M-Pesa STK transactions. We do not sell or share
+                        student details with external tracking companies.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>3. Age Verification</h3>
+                    <p>Orders containing liquor products require age confirmation. Delivery riders will check university
+                        student IDs or national IDs at the delivery point to ensure you are 18 years of age or older.
+                    </p>
+                </div>
+                <div class="legal-section">
+                    <h3>4. Contact Us</h3>
+                    <p>If you wish to update or delete your customer order logs, contact our privacy desk at
+                        privacy@comradecart.co.ke.</p>
+                </div>
+            </div>
+
+            <!-- Terms & Conditions Content -->
+            <div id="legal-terms" class="legal-container" style="display:none;">
+                <h2 class="legal-title">Terms & Conditions</h2>
+                <div class="legal-section">
+                    <h3>1. Service Availability</h3>
+                    <p>ComradeCart operates deliveries in Kutus Town and surrounding student zones. Our active service
+                        hours are strictly from <strong>8:00 AM to 10:00 PM</strong> daily. Orders placed outside this
+                        window will be scheduled for delivery the following morning starting at 8:00 AM.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>2. Pricing & Delivery Fees</h3>
+                    <p>Product prices are aggregated from local Kutus vendor shops. We charge a flat delivery rate of
+                        KES 50 for students. Prices are subject to slight market adjustments, but the final cart price
+                        at checkout is what you pay.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>3. Payment Methods</h3>
+                    <p>All payments must be completed prior to or upon delivery arrival via Safaricom M-Pesa. Standard
+                        M-Pesa transactions are simulated via our checkout platform for confirmation. Cash on delivery
+                        is accepted only for non-alcohol, small grocery orders.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>4. Alcohol Delivery Restriction</h3>
+                    <p>By ordering liquor or alcohol products, you agree that you are over 18 years old. ComradeCart
+                        supports responsible drinking. Riders are legally required to cancel the alcohol portion of any
+                        order if the buyer cannot verify their legal age on delivery.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>5. Cancellations & Refunds</h3>
+                    <p>Students can cancel orders before the preparing stage has finished. Once the status shows "Rider
+                        Dispatched," cancellation is no longer possible. Refunds for damaged or missing items will be
+                        credited back via M-Pesa within 12 hours.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= 4. FLOATING CART DRAWER ================= -->
+    <div id="cart-drawer-overlay" class="cart-drawer-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button id="cart-close" class="cart-close-btn" aria-label="Close Cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cart-items-container" id="cart-items-container">
+            <!-- Empty state shown by default -->
+            <div class="empty-cart-view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <p>Your cart is empty</p>
+                <p style="font-size: 0.8rem; margin-top: 0.25rem;">Add groceries, snacks or party packs to get started!
+                </p>
+            </div>
+        </div>
+
+        <div class="cart-checkout-pane">
+            <div class="price-row">
+                <span>Items Subtotal</span>
+                <span id="cart-subtotal">KES 0</span>
+            </div>
+            <div class="price-row">
+                <span>Delivery Fee (Kutus Flat)</span>
+                <span id="cart-delivery-fee">KES 50</span>
+            </div>
+            <div class="price-row total">
+                <span>Total Payment</span>
+                <span id="cart-total">KES 0</span>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" disabled>
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= 5. CHECKOUT FORM MODAL ================= -->
+    <div id="checkout-modal" class="checkout-form-container">
+        <div class="checkout-card">
+            <div class="checkout-form-header">
+                <h3>Delivery Details</h3>
+                <button id="close-checkout" class="cart-close-btn" style="color:inherit;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="checkout-form">
+                <div class="checkout-form-body">
+                    <div class="form-group">
+                        <label for="student-name">Recipient Name</label>
+                        <input type="text" id="student-name" class="form-control" placeholder="e.g. Joseph Omwamba"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="delivery-location">Hostel or Apartment in Kutus</label>
+                        <select id="delivery-location" class="form-control" required>
+                            <option value="" disabled selected>Select delivery location...</option>
+                            <option value="KyU Male Hostels">KyU Male Hostels (On Campus)</option>
+                            <option value="KyU Female Hostels">KyU Female Hostels (On Campus)</option>
+                            <option value="Sunrise Hostels">Sunrise Hostels (Kutus)</option>
+                            <option value="Highrise Apartments">Highrise Apartments (Kutus)</option>
+                            <option value="Sunset Villa">Sunset Villa</option>
+                            <option value="Oasis Heights">Oasis Heights Apartments</option>
+                            <option value="Favour Plaza">Favour Plaza (Near KyU gate)</option>
+                            <option value="Kutus Town Center">Kutus Town (Shops Area)</option>
+                            <option value="Other">Other Apartment (Specify below)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="other-location-group" style="display:none;">
+                        <label for="other-location">Specify Apartment Name</label>
+                        <input type="text" id="other-location" class="form-control" placeholder="e.g. Blue Sky Hostels">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="room-number">Room / House Number</label>
+                        <input type="text" id="room-number" class="form-control"
+                            placeholder="e.g. Block C Room 12, or House 4" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mpesa-number">M-Pesa Phone Number</label>
+                        <input type="tel" id="mpesa-number" class="form-control"
+                            placeholder="e.g. 0712345678 or 0798765432" required pattern="^(07|01|2547|2541)[0-9]{8}$">
+                        <p style="font-size:0.75rem; color:var(--text-muted);">For Safaricom STK Push simulation prompt.
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="special-notes">Delivery / Rider Instructions</label>
+                        <input type="text" id="special-notes" class="form-control"
+                            placeholder="e.g. Call when outside. Drop near the security desk.">
+                    </div>
+                </div>
+
+                <div class="checkout-form-footer">
+                    <button type="button" id="cancel-checkout" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Pay with M-Pesa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= 6. M-PESA STK SIMULATOR MODAL ================= -->
+    <div id="mpesa-modal" class="mpesa-modal-overlay">
+        <div class="mpesa-phone">
+            <div class="mpesa-screen">
+                <div class="mpesa-header">M-PESA</div>
+                <div class="mpesa-prompt">
+                    Pay ComradeCart KES <span id="mpesa-amount">0.00</span>?<br>
+                    Enter M-PESA PIN:
+                </div>
+                <input type="password" id="mpesa-pin" class="mpesa-input" maxlength="4" placeholder="••••"
+                    autocomplete="new-password">
+                <div class="mpesa-actions">
+                    <button type="button" id="mpesa-cancel" class="mpesa-btn">Cancel</button>
+                    <button type="button" id="mpesa-ok" class="mpesa-btn ok">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 7. ORDER TRACKING MODAL ================= -->
+    <div id="tracker-modal" class="tracker-modal-overlay">
+        <div class="tracker-card">
+            <div class="tracker-header">
+                <h3 class="tracker-title">Order Status</h3>
+                <span class="tracker-order-id">ORDER ID: <span id="tracker-id-placeholder">CC-874291</span></span>
+            </div>
+
+            <div class="tracker-body">
+                <!-- Map Simulation -->
+                <div class="mock-map">
+                    <div class="mock-map-grid"></div>
+                    <div class="mock-map-road vertical"></div>
+                    <div class="mock-map-road horizontal"></div>
+
+                    <!-- Kutus Town Shop (Starting point) -->
+                    <div class="map-pin shop">
+                        🏬
+                        <span class="map-pin-label">Kutus Shop Hub</span>
+                    </div>
+
+                    <!-- Destination (Campus/Hostel) -->
+                    <div class="map-pin campus">
+                        🏫
+                        <span class="map-pin-label" id="map-destination-label">KyU Hostels</span>
+                    </div>
+
+                    <!-- Rider Pin -->
+                    <div id="map-rider" class="map-pin rider" style="display:none;">
+                        🏍️
+                        <span class="map-pin-label" style="background:var(--secondary)">Rider (On Way)</span>
+                    </div>
+                </div>
+
+                <!-- Status Timeline -->
+                <div class="steps-container">
+                    <div class="step-item completed" id="step-received">
+                        <div class="step-marker"></div>
+                        <h4 class="step-title">Order Received</h4>
+                        <p class="step-desc">Sent to our Kutus hub. Allocating staff.</p>
+                    </div>
+
+                    <div class="step-item" id="step-preparing">
+                        <div class="step-marker"></div>
+                        <h4 class="step-title">Preparing Order</h4>
+                        <p class="step-desc">Vendor is pack-sealing your items.</p>
+                    </div>
+
+                    <div class="step-item" id="step-dispatched">
+                        <div class="step-marker"></div>
+                        <h4 class="step-title">Rider Dispatched</h4>
+                        <p class="step-desc">Moto-rider heading your way via Kutus-KyU road.</p>
+                    </div>
+
+                    <div class="step-item" id="step-delivered">
+                        <div class="step-marker"></div>
+                        <h4 class="step-title">Delivered</h4>
+                        <p class="step-desc">Enjoy your groceries & sherehe pack! Karibu tena.</p>
+                    </div>
+                </div>
+
+                <button id="tracker-close-btn" class="btn-primary" style="width:100%; display:none; margin-top:1rem;">
+                    Close Tracker
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 8. FOOTER SECTION ================= -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3 style="font-size:1.4rem; color:var(--text-dark); margin-bottom:0.75rem;"
+                        class="dark:text-white">
+                        <span class="logo-badge">Comrade</span>Cart
+                    </h3>
+                    <p style="font-size:0.85rem;">The leading online student delivery service in Kutus town, Kirinyaga
+                        County. Tailored speeds and pricing structure for Kirinyaga University (KyU) comrades.</p>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h4>Explore</h4>
+                        <a href="#" class="footer-nav-link" data-tab="home">Home Delivery</a>
+                        <a href="#" class="footer-nav-link" data-tab="about">About Us</a>
+                        <a href="#" class="footer-nav-link" data-tab="contact">Help Center</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="#" class="footer-nav-link" data-tab="legal" data-legal="privacy">Privacy Policy</a>
+                        <a href="#" class="footer-nav-link" data-tab="legal" data-legal="terms">Terms of Service</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Deliveries</h4>
+                        <p style="font-size:0.85rem; max-width:200px;">Every Day: 8:00 AM - 10:00 PM. Boda-riders
+                            dispatching from Kutus Central Hub.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ComradeCart. All rights reserved. Servicing Kutus Campus Comrades.</p>
+                <p>Designed with ❤️ for Kirinyaga University Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core App Logic Script -->
+    <script src="delivery-app.js"></script>
+</body>
+
+</html>
